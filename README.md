@@ -1,16 +1,20 @@
-# React + Vite
+﻿# Proyecto Rick and Morty - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Este es un proyecto desarrollado en React que consume la API publica de Rick and Morty.
 
-Currently, two official plugins are available:
+## Caracteristicas
+- Consumo de API: Conexion en tiempo real a rickandmortyapi.com.
+- Buscador: Filtro por nombre en tiempo real (con debounce).
+- Filtros: Seleccion por especie y estado (Alive, Dead, Unknown).
+- Vista de detalle: Visualizacion completa de cada personaje (episodios, origen, etc.).
+- Diseno: Interfaz responsiva inspirada en el estilo visual de la serie (colores neon y fondo espacial).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias
+- React (con Vite)
+- React Router (para la navegacion)
+- CSS Puro (sin frameworks externos)
 
-## React Compiler
+## Despliegue
+La aplicacion esta desplegada en AWS EC2 (Amazon Linux 2023) y servida con Nginx.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+URL de la app: http://52.91.112.15 (Nota: la IP publica cambia si la instancia EC2 se reinicia).
