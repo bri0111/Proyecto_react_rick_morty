@@ -1,4 +1,4 @@
-﻿# Proyecto Rick and Morty - React
+# Proyecto Rick and Morty - React
 
 Este es un proyecto desarrollado en React que consume la API publica de Rick and Morty.
 
@@ -12,7 +12,8 @@ Este es un proyecto desarrollado en React que consume la API publica de Rick and
 ## Tecnologias
 - React (con Vite)
 - React Router (para la navegacion)
-- CSS Puro (sin frameworks externos)
+- Bootstrap (para el diseno responsivo)
+- CSS Puro (para el estilo tematico de la serie)
 
 ## Despliegue
 La aplicacion esta desplegada en AWS EC2 (Amazon Linux 2023) y servida con Nginx.
