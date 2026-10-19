@@ -1,0 +1,356 @@
+/* ============ RESET ============ */
+* {
+  box-sizing: border-box;
+}
+
+/* ============ FONDO ESPACIAL ============ */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #c8ffc8;
+  background-color: #000;
+  background-image:
+    /* Estrellas grandes y brillantes */
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 60px 70px, #fff, transparent),
+    radial-gradient(3px 3px at 120px 40px, #97ce4c, transparent),
+    radial-gradient(2px 2px at 180px 110px, #fff, transparent),
+    radial-gradient(2px 2px at 240px 60px, #fff, transparent),
+    radial-gradient(3px 3px at 300px 150px, #fff, transparent),
+    radial-gradient(2px 2px at 360px 90px, #97ce4c, transparent),
+    radial-gradient(2px 2px at 420px 200px, #fff, transparent),
+    radial-gradient(2px 2px at 480px 50px, #fff, transparent),
+    radial-gradient(3px 3px at 540px 180px, #fff, transparent),
+    radial-gradient(2px 2px at 600px 100px, #97ce4c, transparent),
+    radial-gradient(2px 2px at 660px 220px, #fff, transparent),
+    radial-gradient(2px 2px at 720px 40px, #fff, transparent),
+    radial-gradient(2px 2px at 780px 160px, #fff, transparent),
+    /* Estrellas pequeñas */
+    radial-gradient(1px 1px at 30px 250px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 320px, #fff, transparent),
+    radial-gradient(1px 1px at 150px 400px, #fff, transparent),
+    radial-gradient(1px 1px at 210px 280px, #97ce4c, transparent),
+    radial-gradient(1px 1px at 270px 380px, #fff, transparent),
+    radial-gradient(1px 1px at 330px 300px, #fff, transparent),
+    radial-gradient(1px 1px at 390px 450px, #fff, transparent),
+    radial-gradient(1px 1px at 450px 350px, #97ce4c, transparent),
+    radial-gradient(1px 1px at 510px 420px, #fff, transparent),
+    radial-gradient(1px 1px at 570px 300px, #fff, transparent),
+    radial-gradient(1px 1px at 630px 400px, #fff, transparent),
+    radial-gradient(1px 1px at 690px 340px, #97ce4c, transparent),
+    radial-gradient(1px 1px at 750px 450px, #fff, transparent);
+  background-size: 800px 500px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* Nebulosas verdes y púrpuras encima del negro */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 700px 400px at 15% 25%, rgba(57, 255, 20, 0.18), transparent 60%),
+    radial-gradient(ellipse 600px 500px at 85% 70%, rgba(151, 206, 76, 0.15), transparent 60%),
+    radial-gradient(ellipse 800px 400px at 50% 95%, rgba(140, 60, 220, 0.15), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: nebulaShift 25s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaShift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(40px, -30px) scale(1.05); }
+}
+
+/* ============ LAYOUT ============ */
+.app {
+  padding: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============ TÍTULO ============ */
+.title {
+  font-size: 3rem;
+  text-align: center;
+  color: #39ff14;
+  margin-bottom: 0.3rem;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #39ff14,
+    0 0 80px #00ff88;
+  letter-spacing: 2px;
+  animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from { text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14; }
+  to { text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14, 0 0 80px #00ff88; }
+}
+
+.subtitle {
+  text-align: center;
+  color: #7dff7d;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+/* ============ GRID DE TARJETAS ============ */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ============ TARJETA ============ */
+.character-card {
+  background: linear-gradient(145deg, rgba(13, 31, 13, 0.9), rgba(0, 26, 0, 0.95));
+  border: 2px solid #39ff14;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 8px #39ff14,
+    0 0 16px rgba(57, 255, 20, 0.5),
+    inset 0 0 10px rgba(57, 255, 20, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.character-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #66ff66;
+  box-shadow:
+    0 0 15px #39ff14,
+    0 0 30px #39ff14,
+    0 0 60px rgba(57, 255, 20, 0.6),
+    inset 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+.character-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 2px solid #39ff14;
+  filter: brightness(0.95) contrast(1.05);
+  transition: filter 0.3s;
+}
+
+.character-card:hover .character-image {
+  filter: brightness(1.1) contrast(1.15) saturate(1.2);
+}
+
+.character-info {
+  padding: 1rem;
+}
+
+.character-name {
+  font-size: 1.15rem;
+  margin: 0 0 0.6rem 0;
+  color: #39ff14;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.8);
+}
+
+.character-info p {
+  margin: 0.35rem 0;
+  font-size: 0.88rem;
+  color: #a8ffa8;
+  line-height: 1.3;
+}
+
+.character-info strong {
+  color: #39ff14;
+  font-weight: 600;
+  text-shadow: 0 0 4px rgba(57, 255, 20, 0.5);
+}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #001a00; }
+::-webkit-scrollbar-thumb {
+  background: #39ff14;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #39ff14;
+}
+::-webkit-scrollbar-thumb:hover { background: #66ff66; }
+
+/* ============ LINK TARJETA ============ */
+.character-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ============ VISTA DE DETALLE ============ */
+.character-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.back-button {
+  display: inline-block;
+  color: #39ff14;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #39ff14;
+  border-radius: 30px;
+  margin-bottom: 2rem;
+  transition: all 0.3s;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+}
+
+.back-button:hover {
+  background: rgba(57, 255, 20, 0.15);
+  box-shadow: 0 0 20px #39ff14, 0 0 40px rgba(57, 255, 20, 0.5);
+  transform: translateX(-5px);
+}
+
+.detail-card {
+  display: flex;
+  gap: 2rem;
+  background: linear-gradient(145deg, rgba(13, 31, 13, 0.9), rgba(0, 26, 0, 0.95));
+  border: 2px solid #39ff14;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.5), inset 0 0 20px rgba(57, 255, 20, 0.05);
+  flex-wrap: wrap;
+}
+
+.detail-image {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 16px;
+  border: 2px solid #39ff14;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+  flex-shrink: 0;
+}
+
+.detail-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.detail-name {
+  font-size: 2.2rem;
+  color: #39ff14;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
+  letter-spacing: 1px;
+}
+
+.detail-attributes p {
+  color: #c8ffc8;
+  font-size: 1rem;
+  margin: 0.6rem 0;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+.detail-attributes strong {
+  color: #39ff14;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .detail-card { flex-direction: column; }
+  .detail-image { width: 100%; }
+  .detail-name { font-size: 1.6rem; }
+}
+
+/* ============ BUSCADOR ============ */
+.search-bar {
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  background: rgba(0, 26, 0, 0.7);
+  color: #c8ffc8;
+  border: 2px solid #39ff14;
+  border-radius: 30px;
+  outline: none;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.search-bar input::placeholder {
+  color: #7dff7d;
+  opacity: 0.7;
+}
+
+.search-bar input:focus {
+  border-color: #66ff66;
+  box-shadow: 0 0 15px #39ff14, 0 0 30px rgba(57, 255, 20, 0.6);
+  background: rgba(0, 26, 0, 0.9);
+}
+
+/* ============ FILTROS ============ */
+.filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filters select {
+  padding: 0.7rem 1.2rem;
+  font-size: 0.95rem;
+  background: rgba(0, 26, 0, 0.7);
+  color: #c8ffc8;
+  border: 2px solid #39ff14;
+  border-radius: 12px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.filters select:hover,
+.filters select:focus {
+  border-color: #66ff66;
+  box-shadow: 0 0 15px #39ff14, 0 0 25px rgba(57, 255, 20, 0.5);
+}
+
+.filters select option {
+  background: #001a00;
+  color: #c8ffc8;
+}
+
+/* Optimización para celulares */
+@media (max-width: 768px) {
+  .character-card:hover {
+    transform: none;
+    box-shadow: 0 0 10px #39ff14; /* Efecto más simple para móviles */
+  }
+  .character-card:hover .character-image {
+    filter: none;
+  }
+  .title {
+    animation: none; /* Quita la animación de pulso del título */
+  }
+}
